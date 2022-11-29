@@ -1,0 +1,36 @@
+<div class="cajas">
+    <section class="datos">
+        <div class="photo">
+            <img src="{{miUsuario.url}}" alt="img">
+        </div>
+        <div class="title" >
+            <h2>
+                {{miUsuario.nombre}} {{miUsuario.apellidos}}
+            </h2>
+        </div>
+        <div class="perfil">
+            <h4> Nombre: {{miUsuario.nombre}}</h4>
+            <h4>Apellido: {{miUsuario.apellidos}}</h4>
+            <h4>Correo: {{miUsuario.correo}}</h4>
+        </div>
+    </section>
+    <section class="formulario">
+        <h1>EDITAR DATOS</h1>    
+        <input type="text" name="text" class="input" placeholder="Nombre" #inputNombre>
+        <input type="text" name="text" class="input" placeholder="Apellido" #inputApellido>
+        <input type="text" name="text" class="input" placeholder="Correo" #inputCorreo>
+        <input type="text" name="text" class="input" placeholder="Url" #inputUrl>
+        <button (click)="enviar(inputNombre.value, inputApellido.value, inputCorreo.value, inputUrl.value)"> MODIFICAR</button>
+        <div [hidden]="isHidden" class="toast" style="color: red;">
+            <h3>
+                No se han detectado cambios
+            </h3>
+        </div>
+        <div [hidden]="isHidden2" class="toast" style="color: greenyellow;">
+            <h3>
+                Usuario actualizado
+            </h3>
+        </div>
+    </section>
+</div>
+

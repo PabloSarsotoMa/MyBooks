@@ -1,0 +1,13 @@
+*{
+    text-decoration:none;
+}
+.footer{
+    height: 50px;
+    background-color:var(--footer_color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer a{
+    color: whitesmoke;
+}

@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --navbar_color:rgb(77, 136, 77);
+    --footer_color: rgb(99, 114, 100);
+    --toast_error_color: rgb(173, 0, 0);
+    --toast_prove_color:  rgb(43, 198, 5);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

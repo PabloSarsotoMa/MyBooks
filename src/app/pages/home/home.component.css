@@ -1,0 +1,23 @@
+.main{
+    height: 80vh;
+    background-image: url("../../../assets/img/libreria fondo.jpg");
+    background-repeat: round;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: whitesmoke;
+}
+.main h1{
+    box-shadow: 5px 5px 5px 5px var(--navbar_color);
+    width: 80%;
+    font-size: 50px;
+    text-align: center;
+}
+.main h2{
+    box-shadow: 5px 5px 5px 5px var(--navbar_color);
+    width: 70%;
+    font-size: 30px;
+    margin-bottom: 100px;
+    text-align: center;
+}
