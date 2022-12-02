@@ -14,11 +14,13 @@ h1{
 }
 .enlaces{
     width: 200px;
-    padding-right: 20px;
+    padding-right: 10%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 10%;
 }
 .enlaces a{
+    font-size: large;
     color: whitesmoke;
 }

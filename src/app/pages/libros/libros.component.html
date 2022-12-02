@@ -1,0 +1,37 @@
+<section class="buscador">
+    <div class="group">
+        <input placeholder="Search" type="search" class="input" #id_libro>
+        <button class="cssbuttons-io-button" (click)="mostrar_libros(id_libro.value)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+            <span>BUSCAR</span>
+          </button>
+    </div>
+</section>
+<section class="main">
+    <div [hidden]="isHidden" class="toast" style="color: black;font-size: x-large;">
+        <h3>
+            No existe la referencia del libro introducido.
+        </h3>
+    </div>
+    
+    <div *ngIf="misLibros.length === 0;else esFalso">
+        <h1>NO HAY LIBROS EN LA BIBLIOTECA</h1>
+    </div>
+    <ng-template #esFalso>
+        
+        <div class="container">
+            <div style="width: 13rem;background-color: #E9F1F7;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;margin-bottom: 2%;border-radius: 50px;" *ngFor="let libro of misLibros; let impar = odd; let par = even;">
+                <button class="eliminar" (click)="eliminar_libro(libro.id_libro)">X</button>
+                <img style="width: 10rem;border-radius: 50px;" src="{{libro.photo}}" class="card-img-top" alt="...">
+                <div class="card-body" style="display: flex;flex-direction: column;justify-content: flex-start;align-items: center;">
+                    <h2 class="card-title"style="display: flex;justify-content: center;align-items: center;">{{libro.titulo}}</h2>
+                        {{libro.tipoLibro}} <br>
+                        {{libro.autor}} <br>
+                        {{libro.id_libro | referencias}} <br>
+                        Precio: {{libro.precio}} <hr>
+                </div>
+                <a class="button" [ngClass]="{class1:impar,class2:par}">COMPRAR</a><br>
+            </div>
+        </div>
+    </ng-template>
+</section>

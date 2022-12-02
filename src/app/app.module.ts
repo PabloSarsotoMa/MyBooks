@@ -10,6 +10,10 @@ import { FormularioRegistroComponent } from './component/formulario-registro/for
 import { RegistroComponent } from './pages/registro/registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { FormsModule } from '@angular/forms';
+import { LibrosComponent } from './pages/libros/libros.component';
+import { ReferenciasPipe } from './pipes/referencias.pipe';
+import { AddBooksComponent } from './pages/add-books/add-books.component';
+import { UpdateBooksComponent } from './pages/update-books/update-books.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FormularioRegistroComponent,
     RegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    LibrosComponent,
+    ReferenciasPipe,
+    AddBooksComponent,
+    UpdateBooksComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<section class="form">
+    <form action=""class="formulario">
+        <h1>AÑADIR NUEVOS LIBROS</h1>    
+        <input type="text" name="text" class="input" placeholder="Título" #inputTitulo>
+        <input type="text" name="text" class="input" placeholder="Tapa Blanda/Dura" #inputTipo>
+        <input type="text" name="text" class="input" placeholder="Autor" #inputAutor>
+        <input type="text" name="text" class="input" placeholder="Photo/URL" #inputUrl>
+        <input type="text" name="text" class="input" placeholder="Precio" #inputPrecio>
+        <input type="text" name="text" class="input" placeholder="Código Libro" #inputCodigo>
+        <button (click)="anadir_libro(inputTitulo.value,inputTipo.value,inputAutor.value,inputPrecio.value,inputUrl.value,inputCodigo.value)"> INSERTAR LIBRO</button>
+    </form>
+</section>
