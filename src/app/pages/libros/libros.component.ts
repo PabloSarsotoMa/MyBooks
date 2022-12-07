@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Libro } from 'src/app/models/libro';
+import { Usuario } from 'src/app/models/usuario';
 import { LibrosService } from 'src/app/shared/libros.service';
+import { UsuarioService } from 'src/app/shared/usuario.service';
 
 @Component({
   selector: 'app-libros',
@@ -8,34 +10,31 @@ import { LibrosService } from 'src/app/shared/libros.service';
   styleUrls: ['./libros.component.css']
 })
 export class LibrosComponent {
+  
   public misLibros: Libro[];
   public isHidden:boolean;
-  constructor(public libroService:LibrosService){
-    this.misLibros = this.libroService.getAll();
-    this.isHidden = true;
-  }
-  mostrar_libros(id_libro:number = 0){
+  public user:Usuario;
+  constructor(public libroService:LibrosService, public usuarioService:UsuarioService){
     this.misLibros = [];
-    if(id_libro ==0){
-      this.libroService.getAll();
-      this.isHidden = true;
-      this.misLibros = this.libroService.getAll();
-    }else {
-      this.libroService.getOne(id_libro);
-      if(this.libroService.getOne(id_libro)!=null){
-        this.misLibros.push(this.libroService.getOne(id_libro));
-        this.isHidden = true;
-      }else{
-        this.isHidden = false;
-      }
+    this.isHidden = true;
+    this.user = this.usuarioService.usuario;
+  }
+  public mostrar_libros(id_libro:string){//los campos siempre devuelven strings
+    if(id_libro == ""){
+      this.libroService.getAll(this.usuarioService.usuario.nombre)//coge el nombre del usuario logueado
+      .subscribe((data: Libro[]) =>{//data es el mismo tipo que el observable que viene de la api
+        this.misLibros = data;
+        console.log(this.misLibros[0]);
+        
+      })
+    }else{
+      this.libroService.getOne(parseInt(id_libro),this.usuarioService.usuario.nombre)
+      .subscribe((data: Libro[]) =>{
+        this.misLibros = data;
+      })
     }
   }
-  eliminar_libro(id_libro:string){
-
-    console.log(id_libro);
-    
-      if (this.libroService.delete(parseInt(id_libro))){
-        this.misLibros = this.libroService.getAll();
-      }
-  }
+  public eliminar_libro(id_libro:string){
+      this.libroService.delete(parseInt(id_libro)).subscribe();
+    }
 }

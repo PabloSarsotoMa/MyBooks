@@ -1,10 +1,9 @@
 export class Usuario {
-    constructor(public id_usuario:number,
+    constructor(
         public nombre:string,
         public apellidos:string,
         public correo:string,
-        public url:string,
-        public password:string){
-            // this.nombre = "Pedro"
-        }
+        public foto:string,
+        public password:string,
+        public id_usuario:number = 0){}
 }

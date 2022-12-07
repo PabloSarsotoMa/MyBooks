@@ -1,54 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Libro } from '../models/libro';
 import { LibrosComponent } from '../pages/libros/libros.component';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibrosService {
   private libros: Libro[];
-  constructor() {
-    this.libros = [
-      new Libro("El Principito","tapa blanda","Menchu",34,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzcLe2m7KklPfNoToyTBctdk5YQxmnZJw4mw&usqp=CAU",1)
-    ]
+  private url:String;
+  constructor(private http:HttpClient) {
+    this.url = "http://localhost:3000"
   }
-  getAll():Libro[]{
-    return this.libros;
+  getAll(userId:string){
+    return this.http.get(this.url + "/libros?id_usuario=" + userId);
   }
-  getOne(id_libro:number):Libro{
-    let libro:Libro;
-    for(let i:number=0;i<this.libros.length;i++){
-      if(this.libros[i].id_libro == id_libro){
-        libro = this.libros[i];
-      }
-    }
-    return libro;
+  getOne(id_libro:number,userId:string){
+    return this.http.get(this.url + "/libros?id_usuario=" + userId + "&id_libro=" + id_libro);
   }
-  add(libro:Libro):void{
-    this.libros.push(libro);
+  add(libro:Libro){
+    console.log(libro);
+    return this.http.post(this.url + "/libros", libro);
   }
-  edit(libro:Libro):Boolean{
-    let edit:Boolean;
-    for(let i:number = 0;i<this.libros.length;i++){
-    if(this.libros[i].id_libro == libro.id_libro){
-      this.libros[i] = libro;
-      edit = true;
-    }else{
-      edit = false;
-    }
-    }
-    return edit;
+  edit(libro:Libro){
+    return this.http.put(this.url + "/libros", libro);
   }
-  delete(id_libro:Number):Boolean{
-    let borrar:Boolean = false;
-    for (let i:number = 0; i<this.libros.length;i++){
-      console.log(this.libros[i]);
-      console.log(id_libro)
-      if (this.libros[i].id_libro == id_libro){
-        this.libros.splice(i,1);
-        borrar = true;
-      }
-    }
-    return borrar;
+  delete(id_libro:Number){
+    const httpOptions = {header:null,body:{id_libro}}
+    return this.http.delete(this.url + "/libros", httpOptions);
   }
 }

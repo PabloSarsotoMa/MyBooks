@@ -1,0 +1,7 @@
+.fondo{
+    height: 80vh;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

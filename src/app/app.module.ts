@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -14,6 +14,8 @@ import { LibrosComponent } from './pages/libros/libros.component';
 import { ReferenciasPipe } from './pipes/referencias.pipe';
 import { AddBooksComponent } from './pages/add-books/add-books.component';
 import { UpdateBooksComponent } from './pages/update-books/update-books.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,15 @@ import { UpdateBooksComponent } from './pages/update-books/update-books.componen
     LibrosComponent,
     ReferenciasPipe,
     AddBooksComponent,
-    UpdateBooksComponent
+    UpdateBooksComponent,
+    LoginComponent,
+    FormularioLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

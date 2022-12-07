@@ -14,13 +14,13 @@ export class UpdateBooksComponent {
     this.isHidden = true;
   }
   modificar_libro(titulo:string,tipo:string,autor:string,precio:number,foto:string,codigo:number){
-    let nuevoLibro = new Libro(titulo,tipo,autor,precio,foto,codigo);
-    this.libroService.edit(nuevoLibro);
-    if(this.libroService.edit(nuevoLibro)){
-      this.libro = nuevoLibro;
-      this.isHidden = true;
-    }else{
-      this.isHidden = false;
-    }
-  }
+  //   let nuevoLibro = new Libro(titulo,tipo,autor,precio,foto,codigo);
+  //   this.libroService.edit(nuevoLibro);
+  //   if(this.libroService.edit(nuevoLibro)){
+  //     this.libro = nuevoLibro;
+  //     this.isHidden = true;
+  //   }else{
+  //     this.isHidden = false;
+  //   }
+   }
 }

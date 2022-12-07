@@ -13,6 +13,8 @@ h1{
     padding-left: 20px;
 }
 .enlaces{
+    position: absolute;
+    right: 50px;
     width: 200px;
     padding-right: 10%;
     display: flex;

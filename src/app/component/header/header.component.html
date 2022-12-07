@@ -1,13 +1,18 @@
 <link rel="stylesheet" href="header.component.css">
 <div class="navbar">
     <h1>MY BOOKS!</h1>
-    <div class="enlaces">
+    <div class="enlaces" *ngIf="usuario.logueado === false;else esTrue">
         <a routerLink="/home">HOME</a>
+        <a routerLink="/login2">Login</a>
+        <a routerLink="/registro">Registro</a>
+    </div>
+    <ng-template  #esTrue>
+    <div class="enlaces">
         <a routerLink="/perfil">Perfil</a>
         <a routerLink="/addBooks">AddBooks</a>
         <a routerLink="/updateBooks">UpdateBooks</a>
         <a routerLink="/libros">Libros</a>
-        <a routerLink="/registro">Registro</a>
     </div>
+</ng-template>
 </div>
 <router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/shared/usuario.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -9,9 +10,9 @@ export class PerfilComponent {
   public miUsuario: Usuario;
   public isHidden:boolean;
   public isHidden2:boolean;
-  constructor()
+  constructor(public usuario:UsuarioService)
   {
-    this.miUsuario = new Usuario(1,"Pedro","Jimenez Castro","PedritoJCast@gmail.com","../../../assets/img/libreria fondo.jpg","HolaMundo");
+    this.miUsuario = usuario.usuario;
     this.isHidden = true;
     this.isHidden2 = true;
   }
@@ -26,7 +27,7 @@ export class PerfilComponent {
       this.miUsuario.correo = nuevoCorreo;
     }
     if(nuevoUrl != ""){
-      this.miUsuario.url = nuevoUrl;
+      this.miUsuario.foto = nuevoUrl;
     }
     if(nuevoNombre == "" && nuevoApellido == "" && nuevoCorreo == "" && nuevoUrl == ""){
       this.isHidden = false;

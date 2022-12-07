@@ -1,39 +1,107 @@
-<link rel="stylesheet" href="formulario-registro.component.css">
+<div [hidden]="isHidden" style="background-color: red;color:whitesmoke">Las contraseñas no coinciden, por favor revisa los datos</div>
 <section class="registro">
+<div class="nombre">
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #name>
     <label>
-        <span style="transition-delay:0ms">N</span><span style="transition-delay:250ms">a</span><span style="transition-delay:300ms">m</span><span style="transition-delay:350ms">e</span>
+        <span style="transition-delay:0ms">N</span>
+        <span style="transition-delay:250ms">a</span>
+        <span style="transition-delay:300ms">m</span>
+        <span style="transition-delay:350ms">e</span>
     </label>
 </div>
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #surname>
     <label>
         <span style="transition-delay:0ms">S</span><span style="transition-delay:250ms">u</span><span style="transition-delay:300ms">r</span><span style="transition-delay:350ms">n</span><span style="transition-delay:300ms">a</span><span style="transition-delay:350ms">m</span><span style="transition-delay:350ms">e</span>
     </label>
 </div>
+</div>
+<div class="nombre">
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #email>
     <label>
         <span style="transition-delay:0ms">E</span><span style="transition-delay:250ms">m</span><span style="transition-delay:300ms">a</span><span style="transition-delay:350ms">i</span><span style="transition-delay:300ms">l</span>
     </label>
 </div>
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #photo>
     <label>
-        <span style="transition-delay:0ms">U</span><span style="transition-delay:250ms">r</span><span style="transition-delay:300ms">l</span>
+        <span style="transition-delay:0ms">F</span><span style="transition-delay:250ms">o</span><span style="transition-delay:300ms">t</span>
+        <span style="transition-delay:300ms">o</span>
     </label>
 </div>
+</div>
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #password>
     <label>
         <span style="transition-delay:0ms">P</span><span style="transition-delay:250ms">a</span><span style="transition-delay:300ms">s</span><span style="transition-delay:350ms">s</span><span style="transition-delay:300ms">w</span><span style="transition-delay:350ms">o</span><span style="transition-delay:350ms">r</span><span style="transition-delay:350ms">d</span>
     </label>
 </div>
 <div class="form-control">
-    <input type="value" required="">
+    <input type="value" required="" #password2>
     <label>
         <span style="transition-delay:0ms">R</span><span style="transition-delay:250ms">e</span><span style="transition-delay:300ms">p</span><span style="transition-delay:350ms">e</span><span style="transition-delay:300ms">a</span><span style="transition-delay:350ms">t</span><span style="transition-delay:350ms"> </span><span style="transition-delay:350ms">P</span><span style="transition-delay:250ms">a</span><span style="transition-delay:300ms">s</span><span style="transition-delay:350ms">s</span><span style="transition-delay:300ms">w</span><span style="transition-delay:350ms">o</span><span style="transition-delay:350ms">r</span><span style="transition-delay:350ms">d</span>
     </label>
 </div>
+<button (click)="registrarse(name.value,surname.value,email.value,photo.value,password.value,password2.value)"> REGISTRARSE</button>
 </section>
+
+<!-- <section class = "contenido">
+    <div class = "main">
+     <form class ="mb-4" #userForm="ngForm" (ngSubmit)="registrarse(userForm)">
+      <div class="form-group mt-4">
+        <label>Nombre</label>
+        <input type="text" class="form-control" style="width: 250px;"  name="name" [(ngModel)]="usuario.nombre" #nameId="ngModel"
+        [ngClass]="{ 'is-invalid': (nameId.dirty || nameId.touched) && nameId.invalid }" required>
+        <div *ngIf="(nameId.dirty || nameId.touched) && nameId.invalid" class="invalid-feedback">
+          <p *ngIf="nameId.errors.required">El nombre es obligatorio</p>
+        </div>
+      </div>
+
+      <div class="form-group mt-4">
+        <label>Nombre</label>
+        <input type="text" class="form-control" style="width: 250px;"  name="apellidos" [(ngModel)]="usuario.apellidos" #apellidosId="ngModel"
+        [ngClass]="{ 'is-invalid': (apellidosId.dirty || apellidosId.touched) && apellidosId.invalid }" required>
+        <div *ngIf="(apellidosId.dirty || apellidosId.touched) && apellidosId.invalid" class="invalid-feedback">
+          <p *ngIf="apellidosId.errors.required">Los apellidos son obligatorios</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control"  style="width: 250px;"  name="email" [(ngModel)]="usuario.correo" #emailId="ngModel"
+        [ngClass]="{ 'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid }" email required>
+        <div *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid" class="invalid-feedback">
+          <div *ngIf="emailId.errors.required">La dirección de email es obligatoria</div>
+          <div *ngIf="emailId.errors.email">Dirección email incorrecta</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Foto</label>
+        <input type="email" class="form-control"  style="width: 250px;"  name="email" [(ngModel)]="usuario.url" #fotoId="ngModel"
+        [ngClass]="{ 'is-invalid': (fotoId.dirty || fotoId.touched) && fotoId.invalid }" required>
+        <div *ngIf="(fotoId.dirty || fotoId.touched) && fotoId.invalid" class="invalid-feedback">
+          <div *ngIf="fotoId.errors.required">La foto es obligatoria</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control"  style="width: 250px;" name="password" [(ngModel)]="usuario.password" #passwordId="ngModel"
+        [ngClass]="{ 'is-invalid': (passwordId.dirty || passwordId.touched) && passwordId.invalid }" minlength="8" required>
+        <div *ngIf="(passwordId.dirty || passwordId.touched) && passwordId.invalid" class="invalid-feedback">
+          <div *ngIf="passwordId.errors.required">La clave es obligatoria</div>
+          <div *ngIf="passwordId.errors.minlength">La clave debe tener al menos 8 caracteres</div>
+        </div>
+      </div>  
+     
+      <div class="form-group">
+        <button class="btn btn-danger btn-block" [disabled]="userForm.invalid">Submit</button>
+      </div> 
+  
+     </form> 
+  
+    </div>
+  </section> -->

@@ -6,6 +6,8 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { LibrosComponent } from './pages/libros/libros.component';
 import { AddBooksComponent } from './pages/add-books/add-books.component';
 import { UpdateBooksComponent } from './pages/update-books/update-books.component';
+import { LoginComponent } from './pages/login/login.component';
+
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -14,6 +16,7 @@ const routes: Routes = [
   {path:"libros",component:LibrosComponent},
   {path:"addBooks",component:AddBooksComponent},
   {path:"updateBooks",component:UpdateBooksComponent},
+  {path:"login2",component:LoginComponent},
   {path:"",redirectTo:"/home",pathMatch:"full"}
 ];
 
